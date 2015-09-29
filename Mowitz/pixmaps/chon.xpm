@@ -1,0 +1,27 @@
+/* XPM */
+static char * chon[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"17 17 4 1 0 0",
+/* colors */
+" 	s topShadowColor	m white	c #c8c8c8c8c8c8",
+".	s bottomShadowColor	m black	c #646464646464",
+"X	s background	m white	c white",
+"o	s foreground	m black	c black",
+/* pixels */
+"                 ",
+"                .",
+"  XXXXXXXXXXXXX..",
+"  XXXXXXXXXXXXX..",
+"  XXXXXXXXXXoXX..",
+"  XXXXXXXXXooXX..",
+"  XXXXXXXXXoXXX..",
+"  XXXXXXXXooXXX..",
+"  XXoXXXXooXXXX..",
+"  XXooXXooXXXXX..",
+"  XXXooXoXXXXXX..",
+"  XXXXoooXXXXXX..",
+"  XXXXooXXXXXXX..",
+"  XXXXXXXXXXXXX..",
+"  XXXXXXXXXXXXX..",
+"  ...............",
+" ................"};

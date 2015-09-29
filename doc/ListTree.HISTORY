@@ -1,0 +1,53 @@
+ListTree widget
+
+HISTORY:
+
+---Version 0.1:
+15 May 95	rwmcm Created
+16 May 95	displays a simple (no branching) list
+17 May 95	does branches without lines
+18 May 95	added the line drawing
+19 May 95	added bitmaps
+22 May 95	changed line drawing, added Xpm support
+23 May 95	convenience functions for shifting children around
+24 May 95	working on test program
+25 May 95	fixed bug that reparented children incorectly
+26 May 95	adding resource specification for pixmaps
+27 May 95	Creating file selector demo program
+30 May 95	Turned file selector demo into a widget
+ 1 Jun 95	Programs mostly finished.  Waiting for documentation
+ 6 Jun 95	trouble with a few buglets
+ 9 Jun 95	finally found memory allocation bug in MakeCallbackStruct
+19 Jun 95	Completed documentation
+
+---Version 1.00:
+20 Jun 95	Released to ftp.x.org
+
+---Version 1.01:
+27 Jun 95	Added user comparison functions to ordering routines
+			(thanks to Kevin Carson <kcarson@direct.ca>)
+
+---pre version 2.0
+15 Aug 95	Experimental Drag & Drop using the RDD protocol
+23 Aug 95	Added the double click action
+25 Aug 95	Can't seem to fix the redisplay bug (Athena viewport,
+			on-demand scrollbars.)  Hmmm.
+		Workaround is to always show the scrollbars for Athena.
+		Doesn't seem to affect Motif ScrolledWindow.
+29 Aug 95	New logic for the drawing routines
+ 1 Sep 95	Highlight multiple entries!
+ 2 Sep 95	Extend action
+ 5 Sep 95	A few new convenience functions
+12 Sep 95	Fixed the highlighting to highlight out to the widget border
+15 Sep 95	Created the new callback method (ActivateCallback), but will
+			keep the current method as historical.
+17 Sep 95	Updating documentation
+22 Sep 95	Fixed ListTreeFindChildName when item was the toplevel tree
+			entry.
+23 Sep 95	Added Notify procedure to call highlightCallback
+27 Sep 95	More work on documentation
+30 Sep 95	Final checks
+
+---Version 2.00:
+ 2 Oct 95	Released to ftp.x.org
+

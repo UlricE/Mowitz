@@ -1,0 +1,96 @@
+# The format of this file:
+#
+# [Font Name]	Name as it appears to the user
+# AFM=roman|italic|bold|italicbold	AFM filename
+# PFB=roman|italic|bold|italicbold	PFB filename
+# X=roman|italic|bold|italicbold	X fonts
+# PS=roman|italic|bold|italicbold	PS fonts for printing
+# T1=roman|italic|bold|italicbold	T1 fonts (used by libt1)
+
+[Avant Garde]
+AFM=agw.afm|agwo.afm|agd.afm|agdo.afm
+X=-*-courier-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-courier-medium-i-*--*-%d-%d-%d-*-*-*-*|-*-courier-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-courier-bold-i-*--*-%d-%d-%d-*-*-*-*
+PS=AvantGarde-Book|AvantGarde-BookOblique|AvantGarde-Demi|AvantGarde-DemiOblique
+
+[Bitstream Charter]
+AFM=bchr.afm|bchri.afm|bchb.afm|bchbi.afm
+X=-*-new century schoolbook-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-new century schoolbook-medium-i-*--*-%d-%d-%d-*-*-*-*|-*-new century schoolbook-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-new century schoolbook-bold-i-*--*-%d-%d-%d-*-*-*-*
+T1=CharterBT-Roman|CharterBT-Italic|CharterBT-Bold|CharterBT-BoldItalic
+
+[Bookman]
+AFM=bkl.afm|bkli.afm|bkd.afm|bkdi.afm
+X=-*-new century schoolbook-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-new century schoolbook-medium-i-*--*-%d-%d-%d-*-*-*-*|-*-new century schoolbook-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-new century schoolbook-bold-i-*--*-%d-%d-%d-*-*-*-*
+PS=Bookman-Light|Bookman-LightItalic|Bookman-Demi|Bookman-DemiItalic
+ALIAS=Bookman Old Style
+
+[Courier]
+AFM=com.afm|coo.afm|cob.afm|cobo.afm
+X=-*-courier-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-courier-medium-i-*--*-%d-%d-%d-*-*-*-*|-*-courier-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-courier-bold-i-*--*-%d-%d-%d-*-*-*-*
+PS=Courier|Courier-Oblique|Courier-Bold|Courier-BoldOblique
+ALIAS=Courier New
+
+[Helvetica]
+AFM=hv.afm|hvo.afm|hvb.afm|hvbo.afm
+X=-*-helvetica-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-helvetica-medium-o-*--*-%d-%d-%d-*-*-*-*|-*-helvetica-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-helvetica-bold-o-*--*-%d-%d-%d-*-*-*-*
+PS=Helvetica|Helvetica-Oblique|Helvetica-Bold|Helvetica-BoldOblique
+ALIAS=MS Sans Serif
+ALIAS=Arial
+ALIAS=Arial Black
+ALIAS=Chicago
+
+[Helvetica Narrow]
+AFM=hvn.afm|hvno.afm|hvnb.afm|hvnbo.afm
+X=-*-helvetica-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-helvetica-medium-o-*--*-%d-%d-%d-*-*-*-*|-*-helvetica-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-helvetica-bold-o-*--*-%d-%d-%d-*-*-*-*
+PS=Helvetica-Narrow|Helvetica-Narrow-Oblique|Helvetica-Narrow-Bold|Helvetica-Narrow-BoldOblique
+ALIAS=Arial Narrow
+
+[New Century Schoolbook]
+AFM=ncr.afm|nci.afm|ncb.afm|ncbi.afm
+X=-*-new century schoolbook-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-new century schoolbook-medium-i-*--*-%d-%d-%d-*-*-*-*|-*-new century schoolbook-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-new century schoolbook-bold-i-*--*-%d-%d-%d-*-*-*-*
+PS=NewCenturySchlbk-Roman|NewCenturySchlbk-Italic|NewCenturySchlbk-Bold|NewCenturySchlbk-BoldItalic
+ALIAS=Garamond
+ALIAS=Monaco
+
+[Palatino]
+AFM=por.afm|poi.afm|pob.afm|pobi.afm
+X=-*-times-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-times-medium-i-*--*-%d-%d-%d-*-*-*-*|-*-times-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-times-bold-i-*--*-%d-%d-%d-*-*-*-*
+PS=Palatino-Roman|Palatino-Italic|Palatino-Bold|Palatino-BoldItalic
+
+[Times]
+AFM=tir.afm|tii.afm|tib.afm|tibi.afm
+X=-*-times-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-times-medium-i-*--*-%d-%d-%d-*-*-*-*|-*-times-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-times-bold-i-*--*-%d-%d-%d-*-*-*-*
+PS=Times-Roman|Times-Italic|Times-Bold|Times-BoldItalic
+ALIAS=Times New Roman
+ALIAS=New York
+
+[Symbol]
+AFM=sy.afm|sy.afm|sy.afm|sy.afm
+X=-*-symbol-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-symbol-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-symbol-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-symbol-medium-r-*--*-%d-%d-%d-*-*-*-*
+PS=Symbol|Symbol|Symbol|Symbol
+
+[Zapf Chancery]
+AFM=zcmi.afm|zcmi.afm|zcmi.afm|zcmi.afm
+X=-*-times-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-times-medium-i-*--*-%d-%d-%d-*-*-*-*|-*-times-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-times-bold-i-*--*-%d-%d-%d-*-*-*-*
+PS=ZapfChancery-MediumItalic|ZapfChancery-MediumItalic|ZapfChancery-MediumItalic|ZapfChancery-MediumItalic
+
+[Zapf Dingbats]
+AFM=zd.afm|zd.afm|zd.afm|zd.afm
+X=-*-courier-medium-r-*--*-%d-%d-%d-*-*-*-*|-*-courier-medium-i-*--*-%d-%d-%d-*-*-*-*|-*-courier-bold-r-*--*-%d-%d-%d-*-*-*-*|-*-courier-bold-i-*--*-%d-%d-%d-*-*-*-*
+PS=ZapfDingbats|ZapfDingbats|ZapfDingbats|ZapfDingbats
+
+# To use these fonts, the pfb files must be added
+#[Nimbus Sans]
+#AFM=uhvr8a.afm|uhvro8a.afm|uhvb8a.afm|uhvbo8a.afm
+#T1=NimbusSanL-Regu|NimbusSanL-ReguItal|NimbusSanL-Bold|NimbusSanL-BoldItal
+#
+#[Nimbus Roman]
+#AFM=utmr8a.afm|utmri8a.afm|utmb8a.afm|utmbi8a.afm
+#T1=NimbusRomNo9L-Regu|NimbusRomNo9L-ReguItal|NimbusRomNo9L-Medi|NimbusRomNo9L-MediItal
+
+# Example of a Latin2 font.
+[Times2]
+AFM=tnrl2___.afm|tnrl2i__.afm|tnrl2b__.afm|tnrl2bi_.afm
+X=-*-times-medium-r-*--*-%d-%d-%d-*-*-*-2|-*-times-medium-i-*--*-%d-%d-%d-*-*-*-2|-*-times-bold-r-*--*-%d-%d-%d-*-*-*-2|-*-times-bold-i-*--*-%d-%d-%d-*-*-*-2
+PS=TimesNewRomanL2|TimesNewRomanL2-Italic|TimesNewRomanL2-Bold|TimesNewRomanL2-BoldItalic
+PFB=tnrl2___.pfb|tnrl2i__.pfb|tnrl2b__.pfb|tnrl2bi_.pfb
+

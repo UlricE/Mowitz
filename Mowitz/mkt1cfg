@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Create the t1lib.config file used to configure t1lib.
+# Users who want to use another file can do so by setting the environment
+# variable T1LIB_CONFIG to the full path of te file.
+
+# This file will normally end up as /usr/local/share/Mowitz/common/t1lib.config
+
+if [ "$1" = "" ]; then
+	datadir="/usr/local/share"
+else
+	datadir="$1"
+fi
+
+echo "This is a configuration file for t1lib"
+echo
+echo "FONTDATABASE=$datadir/FontDataBase"
+echo "ENCODING=$datadir:."
+echo "AFM=$datadir/fonts:."
+echo "TYPE1=$datadir/fonts:."

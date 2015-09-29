@@ -1,0 +1,212 @@
+<html><head><title>ListTree Widget Web Page</title></head><body>
+<h1><a name="top">ListTree Widget <img src=ListTreeTitle.gif></a></h1>
+
+<p>A low resource widget designed to display text strings in a "directory
+list" sort of structure.
+
+
+
+
+
+<ul>
+<li><a href="#current">Current Version</a>
+<li><a href="#screen">Screen Shots</a>
+<ul>
+<li><a href="#fmt">Basic Demo</a>
+<li><a href="#fs">File Selector Demo</a>
+</ul>
+<li><a href="#new"><img src=new.gif align=bottom alt="[New!]">Important version 2.0 changes</a>
+<li><a href="#overview">Overview</a>
+<li><a href="#feat">Features</a>
+<li><a href="#reqs">Requirements</a>
+<li><a href="#history">History</a>
+<li><a href="#note">Author's Note</a>
+<li><a href="#thanks">Thanks</a>
+<li><a href="#copyright">Copyright</a>
+</ul>
+
+
+<ul><li>
+<a href="ListTreeProg.html">Programmer's Documentation</a>
+</ul>
+
+<p><hr><h2><a name="current">Current Version</a></h2>
+
+
+<p>The current version is 2.0.  Source is available at
+<a href=ftp://ftp.x.org/contrib/widgets/ListTree-2.0.tar.gz>ftp.x.org</a>.
+
+<p><hr><h2><a name="screen">Screen Shots</a></h2>
+
+<h3><a name="fmt">Basic Demo</a></h3>
+<p>This picture shows the formatting of the ListTree widget:
+<p><img src=ListTree.gif>
+
+<h3><a name="fs">File Selector Demo</a></h3>
+<p>A more complete (but unsupported) demo is also included with the ListTree
+widget.  Using the 3D Athena widgets, this tree file selector shows more of
+the potential usage of the widget:
+<p><img src=TreeFSel.gif>
+
+
+<p><hr><h2><a name="new"><img src=new.gif align=bottom alt="[New!]">Important version 2.0 changes</a></h2>
+
+<p>Why is this version 2.0, rather than a simple update to 1.1?
+
+<p>Mostly because of a change in the callbacks.  Version 1.0 required the
+user to free the callback return structure, ala Motif.  I didn't like to
+code it that way originally, but I did.  Once I figured out that that
+XtCallCallbacks didn't return to the widget until the callbacks return
+(rather than asyncronously), I changed the callback code so that the user
+doesn't free the return structure.
+
+<p>The old callbacks still exist in the widget, but should now be considered
+historical and unsupported.   So, go ahead and switch to the new
+callbacks now, because I might remove the historical callbacks in a future
+release.  If you switch now, you won't be mad when I really do take out
+the old, hacky callback routines. :)  Check the
+<a href="ListTreeProg.html#historical">Programmer's Documentation</a> for
+more information on converting to the new methods.  It's easy!
+
+<p>The other new features in the widget are multiple highlighting, and a
+change in the operating methodology of the widget.  Single clicking on the
+text of on item highlights the item, but does not open it.  Single clicking
+and dragging selects multiple items.  Double clicking the text highlights
+the item, unselects everything else, and opens the item.  Single clicking
+on the icon opens the item.
+
+<p><hr><h2><a name="overview">Overview</a></h2>
+
+<p>The ListTree Widget is small list widget capable of displaying lists of
+text strings (with an optional pixmap) in a heirarchal directory list sort
+of format.  Unlike all of the other freely available tree widgets that I could
+find, this widget does not use widgets for each item displayed in the tree.
+Instead, it is a list of text strings that contain pointers to parents and
+children in the tree.  This reduces memory usage over widget tree widgets, and
+also simplifies use.
+
+<p>This widget was designed for use in file manager type programs, so an
+optional pixmap is available for displaying to the left of the text item.  The
+pixmap has an open and closed state, and different types of pixmaps are
+available for items with and without children.  Currently, pixmaps for
+different file types are not available.
+
+<p>The lists are activated by clicking the left mouse button on the Pixmap
+of the item, or double clicking ond the name of the item.  The state of the
+item is then toggled, and if the item is open, its children are displayed.
+Ranges of items can also be toggled by clicking and dragging the left mouse
+button over the names of the items you want to highlight.
+
+<p>Because everyone has different tastes in scrollbar asthetics, the ListTree
+widget doesn't have any built-in scrolling capability.  It is designed to be
+placed in some sort of container widget, and use the container's functions to
+scroll around.
+
+<p><hr><h2><a name="feat">Features</a></h2>
+<p>Features provided in the widget include the following:
+
+<ul>
+<li>Pixmap displayed to the left of the text string
+<li>Different pixmaps for open and closed states
+<li>Item highlighting (single or multiple items)
+<li>Double click name or single click on icon to open or close
+<li>Callbacks: (called when selected or unselected)
+<ul>
+<li>Changing state
+<li>Highlighting
+<li>Historical (Superceded, but still exist in version 2.0.)
+<ul>
+<li>Any item
+<li>Item with children
+<li>Item without children
+</ul>
+</ul>
+<li>Selectable line width
+<li>Selectable font
+<li>Various spacing options
+<li>Convenience Functions:
+<ul>
+<li>Add Item
+<li>Delete Item (also deletes dependent children)
+<li>Reparent Item
+<li>Reparent item's children
+<li>Order items
+<li>Order item's children
+<li>Search for item text
+<li>Highlight item
+</ul>
+</ul>
+
+<p><hr><h2><a name="reqs">Requirements</a></h2>
+
+<p>The ListTree code requires X11R4 or later and an ANSI C compiler.  The
+code may compile on a non-ANSI compiler if it supports new style function
+definitions.
+
+<p>The widget is compatible with MOTIF, but does not require it.  It looks
+great with the Athena 3D widgets.
+
+<p><hr><h2><a name="history">History</a></h2>
+
+<p>This code was originally developed on an IBM RS/6000 running AIX 4.1
+and X11R5.  Version 2.0 was developed on a Linux machine running kernel
+1.3.* and XFree86 3.1.2 (X11R6).  It
+was also tested on two other machines: a DEC Alpha/AXP running OSF/1 3.0
+with X11R5; and an SGI Indigo running IRIX 4.0.5 with X11R4.
+
+<p><hr><h2><a name="note">Author's Note</a></h2>
+
+<p>This widget is supplied as freeware, in the hope that it will be useful for
+developers in the X community.  If you do use this widget, I do request that
+you include mention of the ListTree widget in the documentation.  Also,
+remember to include a copy of the entire copyright and permission notice!
+Thanks.
+
+<p>Patches, improvements, suggestions, bug reports, job offers, volleyball
+games, and money you love donating to programmers who make your life <b>so</b>
+much easier are welcome at <tt>&lt;rwmcm@orion.ae.utexas.edu&gt;</tt>.
+I will periodically post patches and improvements to ftp.x.org and the
+ListTree web page at
+<a href="http://www.ae.utexas.edu/~rwmcm/ListTree.html">http://www.ae.utexas.edu/~rwmcm/ListTree.html</a>
+
+<p><hr><h2><a name="thanks">Thanks</a></h2>
+
+<p>Thanks to the following people for providing fixes and suggestions:
+
+<ul>
+<li>Kevin Carson <tt>&lt;kcarson@direct.ca&gt;</tt>
+<li>Tessa Lau <tt>&lt;tlau@allegra.att.com&gt;</tt>
+<li>Pierre Duchene <tt>&lt;pierre@ovs.com&gt;</tt>
+<li>Xyvind Yrke <tt>&lt;oyvind@stavanger.geco-prakla.slb.com&gt;</tt>
+<li>Douglas Kosovic <tt>&lt;douglask@dstc.edu.au&gt;</tt>
+</ul>
+
+<p><hr><h2><a name="copyright">Copyright</a></h2>
+
+<p>Copyright (c) 1995 Robert W. McMullen
+
+<p><h6><small>
+Permission to use, copy, modify, distribute, and sell this software and its
+documentation for any purpose is hereby granted without fee, provided that
+the above copyright notice appear in all copies and that both that copyright
+notice and this permission notice appear in supporting documentation.  All
+work developed as a consequence of the use of this program should duly
+acknowledge such use.  The author makes no representations about the
+suitability of this software for any purpose.  It is provided "as is" without
+express or implied warranty.
+</small></h6>
+
+<p><h6><small>
+THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
+ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS.  IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY
+DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
+AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+</small></h6>
+<hr>
+<a href="http://www.ae.utexas.edu/~rwmcm">About the author</a> |
+<a href="mailto:rwmcm@orion.ae.utexas.edu">Send me E-mail</a> |
+<a href=ListTreeProg.html>ListTree Programmer's Reference</a> |
+<a href="#top">Top of page</a><p>
+</body></html>

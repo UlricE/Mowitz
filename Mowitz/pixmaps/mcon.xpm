@@ -1,0 +1,16 @@
+/* XPM */
+static char * mcon[] = {
+"9 9 4 1",
+" 	s None	c None",
+".	s topShadowColor        m white c lightgray",
+"X	s bottomShadowColor     m black c black",
+"o	s foreground            m black c darkgray",
+"   ...   ",
+"  .XXXo  ",
+" .XXXXXo ",
+".XXXXXXXo",
+".XXXXXXXo",
+".XXXXXXXo",
+" .XXXXXo ",
+"  .XXXo  ",
+"   ooo   "};

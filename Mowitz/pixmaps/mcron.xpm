@@ -1,0 +1,16 @@
+/* XPM */
+static char * mcron[] = {
+"9 9 4 1",
+" 	s bottomShadowColor     m black c darkgray",
+".	s topShadowColor        m white c lightgray",
+"X	s foreground            m black c black",
+"o	s None	c None",
+"         ",
+"        .",
+"  XoooX..",
+"  oXoXo..",
+"  ooXoo..",
+"  oXoXo..",
+"  XoooX..",
+"  .......",
+" ........"};

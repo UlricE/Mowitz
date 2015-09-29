@@ -1,0 +1,25 @@
+
+This directory contains the Adobe Font Metric files that are used for
+all text drawing routines, on screen AND paper. A missing file means
+that X metrics will be used instead, reducing precision.
+
+To use, add an AFM=medium.afm|italic.afm|bold.afm|bolditalic.afm to the
+fonts.txt file. If the files do not live in $prefix/share/siag/common/fonts,
+a full path must be given.
+
+Avant Garde: agw.afm, agwo.afm, agd.afm, agdo.afm
+Bookman: bkl.afm, bkli.afm, bkd.afm, bkdi.afm
+Courier: com.afm, coo.afm, cob.afm, cobo.afm
+Helvetica: hv.afm, hvo.afm, hvb.afm, hvbo.afm
+Helvetica Narrow: hvn.afm, hvno.afm, hvnb.afm, hvnbo.afm
+New Century Schoolbook: ncr.afm, nci.afm, ncb.afm, ncbi.afm
+Palatino: por.afm, poi.afm, pob.afm, pobi.afm
+Times: tir.afm, tii.afm, tib.afm, tibi.afm
+Symbol: 4 x sy.afm
+Zapf Chancery: 4 x zcmi.afm
+Zapf Dingbats: 4 x zd.afm
+Nimbus Sans: uhvr8a.afm, uhvro8a.afm, uhvb8a.afm, uhvbo8a.afm
+Nimbus Roman: utmr8a.afm, utmri8a.afm, utmb8a.afm, utmbi8a.afm
+
+Times2 is a Times equivalent in Latin2 encoding.
+

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# This script finds a Type 1 font file (pfa or pfb) and dumps it on stdout.
+# Binary files are converted to ascii; requires t1ascii from t1utils.
+
+IFS=:
+
+for d in $1; do
+	if [ -f $d/$2 ]; then
+		f=$d/$2
+	fi
+done
+
+case `file "$f"` in
+*data* )
+	pfb2ps < $f
+	;;
+*text* )
+	cat $f
+	;;
+* )
+	echo No such file 1>&2
+	;;
+esac
+

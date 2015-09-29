@@ -1,0 +1,434 @@
+<html><head><title>ListTree Widget Man Page</title></head><body>
+<h1><a name="top">ListTree Widget Programmer's Reference</a></h1>
+
+
+
+
+
+<ul>
+<li><a href="#html3">Viewing this document</a>
+<li><a href="#usage">Usage</a>
+
+<ul>
+<li><a href="#item">List Items</a>
+</ul>
+<li><a href="#res">New Resources</a>
+<li><a href="#cb">Callbacks</a>
+<ul>
+<li><a href="#cb">Callback Resources</a>
+<li><a href="#cb">Activate Callback</a>
+<li><a href="#cb">Highlight Callback</a>
+</ul>
+<li><a href="#historical">Historical Callbacks</a>
+<li><a href="#pub">Public Functions</a>
+<ul>
+<li><a href="#ref">List Refresh Functions</a>
+<li><a href="#listitem">List Item Manipulation Functions</a>
+<li><a href="#listorder">List Item Ordering Functions</a>
+<li><a href="#listfind">List Item Searching Functions</a>
+<li><a href="#listhl">List Highlighting Functions</a>
+</ul>
+</ul>
+
+
+<ul><li>
+<a href="ListTree.html">Back to ListTree home page</a>
+</ul>
+
+<p><hr><h2><a name="html3">Viewing this document</a></h2>
+<p>This programmer's reference for the ListTree widget uses HTML3 tables,
+support for which is becoming very common among WWW browsers.  Both Netscape
+and Mosaic (the most common browsers) support tables, and support for tables in
+<a href=http://www.unlv.edu/chimera/>Chimera</a> (my browser of choice) will
+be included in version 2.0.
+
+<p><hr><h2><a name="usage">Usage</a></h2>
+<p>To use the ListTree widget in an application, include the three source code
+files ListTree.c, ListTree.h, and ListTreeP.h with the rest of the source code
+for the application.  Include the object ListTree.o in the Makefile rule that
+compiles the application.
+
+<p>In source code that uses the ListTree widget, include the following two header
+files before references to the plot widget:
+<pre>
+ #include &lt;X11/Intrinsic.h&gt;
+ #include "ListTree.h"
+</pre>
+
+<p>To create the ListTree widget, use the following code as an example:
+<pre>
+ tree=XtVaCreateManagedWidget("tree",listtreeWidgetClass,parent,
+        XtNheight,      	(Dimension)500,
+        XtNwidth,		(Dimension)150,
+ #ifdef MOTIF
+	XtNborderWidth,		(Dimension)0,
+ #endif
+        NULL,0);
+</pre>
+
+<p>This example creates a 500x150 empty ListTree widget as the child of
+some container widget named parent.  List items must be
+added to the widget using convenience functions, because I couldn't think of
+a good way to add heirarchal items through resources.  The convenience
+function method is also very easy, so this design decision wasn't difficult.
+
+<p>The compilation conditional for MOTIF is used to get rid of the border
+drawn around the widget when using the MOTIF scrolled window as the parent.
+
+<p>Adding items to the list is outlined below:
+<pre>
+int i;
+ListTreeItem *level1,*level2;
+
+	level1=ListTreeAdd(tree,NULL,"Item 1");
+	level1=ListTreeAdd(tree,NULL,"Item 2");
+	level2=ListTreeAdd(tree,level1,"Item 3");
+</pre>
+
+<p>This adds three items to the ListTree widget <i>tree</i>,
+where <i>Item 3</i> is a child of
+<i>Item 2</i>, and both <i>Item 1</i> and <i>Item 2</i> are root level items.
+See
+<a href="#pub">Public Functions</a>
+below for descriptions of all of the convenience
+functions.
+
+<h3><a name="item">List Items</a></h3>
+
+<p>The following structure is returned from the ListTreeAdd convenience
+function, and is used whenever an item is referenced.
+
+<pre>
+typedef struct _ListTreeItem {
+        Boolean         open;
+        Boolean         highlighted;
+        char            *text;
+        int             length;
+        int             x,y,ytext;
+        Dimension       height;
+        struct _ListTreeItem    *parent,
+                        *firstchild,
+                        *prevsibling,*nextsibling;
+        XtPointer       user_data;
+} ListTreeItem;
+</pre>
+
+<p>When this structure is returned for an item, the value points to the actual
+item, not a copy of the item.  Do not modify any value in the structure
+except for the user_data entry, which is provided for your use.  (Use the
+<b>ListTreeRenameItem()</b> public function to modify the text
+in the item.)
+
+<p>I'll rephrase this for emphasis:  the items returned from the widget are
+the actual items the widget uses when it draws the tree.  So, unless you want
+to Mess Things Up Real Good and crash your program, don't fiddle with the
+item structure.
+
+<p>OK, disclaimer out of the way, there is a lot of information available
+here that I didn't want to take away from you, gentle programmer.  Stuff like
+<i>open</i> may be safely modified, but stay away from changing any of the
+positions or dimensions.  Bad news to mess with those.
+
+<p>Really, Really, Really, don't modify parent, firstchild, prevsibling,
+ or nextsibling.
+
+<p>I mean it, because it is possible to throw the widget into an infinite
+loop.
+
+<p>Trust me.
+
+
+<p><hr><h2><a name="res">New Resources</a></h2>
+<p>The ListTree widget defines the following new resources:
+
+<table border>
+<tr><th>Name<th>Class<th>Type<th>Default
+<tr><td>XtNbranchOpenPixmap<td>XtCPixmap<td>Pixmap<td>XtUnspecifiedPixmap
+<tr><td>XtNbranchPixmap<td>XtCPixmap<td>Pixmap<td>XtUnspecifiedPixmap
+<tr><td>XtNfont<td>XtCFont<td>XFontStruct *<td>XtDefaultFont
+<tr><td>XtNforeground<td>XtCForeground<td>Pixel<td>XtDefaultForeground
+<tr><td>XtNhorizontalSpacing<td>XtCMargin<td>Dimension<td>2
+<tr><td>XtNindent<td>XtCMargin<td>Dimension<td>0
+<tr><td>XtNleafOpenPixmap<td>XtCPixmap<td>Pixmap<td>XtUnspecifiedPixmap
+<tr><td>XtNleafPixmap<td>XtCPixmap<td>Pixmap<td>XtUnspecifiedPixmap
+<tr><td>XtNlineWidth<td>XtCMargin<td>Dimension<td>0
+<tr><td>XtNmargin<td>XtCMargin<td>Dimension<td>2
+<tr><td>XtNverticalSpacing<td>XtCMargin<td>Dimension<td>0
+</table>
+
+<p>
+<dl>
+<dt>XtNbranchOpenPixmap
+<dd>Pixmap to use for an item that is open and has children.
+
+<p><dt>XtNbranchOpenPixmap
+<dd>Pixmap to use for an item that is closed and has children.
+
+<p><dt>XtNfont
+<dd>Font to use for items.
+
+<p><dt>XtNforeground
+<dd>Foreground color for text.  Also used for the bitmap color, if any of
+the Pixmap resources is defined instead as a bitmap.
+
+<p><dt>XtNhorizontalSpacing
+<dd>Pixel distance between the Pixmap and item text.
+
+<p><dt>XtNindent
+<dd>Pixel distance to indent a new level of items.  Note that this distance
+is in addition to the width of the Pixmap.
+
+<p><dt>XtNleafOpenPixmap
+<dd>Pixmap to use for an item that is open and does not have children.
+
+<p><dt>XtNleafPixmap
+<dd>Pixmap to use for an item that is closed and does not have children.
+
+<p><dt>XtNlineWidth
+<dd>Specifies the line width used to draw the list heirarchy.
+
+<p><dt>XtNmargin
+<dd>Pixel distance between the border of the widget and any text or Pixmap.
+
+<p><dt>XtNverticalSpacing
+<dd>Pixel distance between neighboring items in the list.
+
+</dl>
+
+<p><hr><h2><a name="cb">Callbacks</a></h2>
+
+<h3><a name="cb">Callback Resources</a></h3>
+<p>The ListTree widget defines the following callback resources:
+
+<dl>
+<p><dt>XtNactivateCallback
+<dd>Called when any item is opened or closed.
+<p><dt>XtNhighlightCallback
+<dd>Called when any item is highlighted.
+</dl>
+
+<h3><a name="cb">Activate Callback</a></h3>
+<p>This callback is called whenever an item is opened, or if an item is
+explicitly closed.  The following structure is sent to the callback.
+
+<pre>
+typedef struct _ListTreeActivateStruct {
+        int             reason;
+        ListTreeItem    *item;
+        Boolean         open;
+        ListTreeItem    **path;
+        int             count;
+} ListTreeActivateStruct;
+</pre>
+
+<dl>
+<p><dt>reason
+<dd>One of two constants, XtBRANCH or XtLEAF, indicating that the item
+has children or does not, respectively.
+
+<p><dt>item
+<dd>Pointer to the item selected (or unselected).
+
+<p><dt>open
+<dd>The state of the selected item.
+
+<p><dt>path
+<dd>The path from the root of the list to the selected item, including the
+selected item.
+
+<p><dt>count
+<dd>The number of items in <i>path</i>.
+</dl>
+
+
+<h3><a name="cb">Highlight Callback</a></h3>
+<p>This callback is called whether the item is opened or closed, and
+is passed the following structure.
+
+<pre>
+typedef struct _ListTreeMultiReturnStruct {
+        ListTreeItem    **items;
+        int             count;
+} ListTreeMultiReturnStruct;
+</pre>
+
+<dl>
+<p><dt>items
+<dd>Pointer to a list of pointers that holds all of the highlighted items.
+
+<p><dt>count
+<dd>The number of highlighted items.
+</dl>
+
+
+<p><hr><h2><a name="historical">Historical Callbacks</a></h2>
+
+<p>Three other callbacks exist in the widget, but I decided not to document
+them.
+
+<p><b>New users</b>, don't worry about the historical callbacks.  The
+current callbacks are better.
+
+<p><b>Users of the previous version</b>, please change to the new callbacks.
+You'll need to do the following:
+
+<ol>
+<li>change all references of XtNleafCallback, XtNbranchCallback, and XtNpathCallback to XtNactivateCallback
+<li>change the reference from ListTreeReturnStruct to ListTreeActivateStruct
+<li>use the <i>reason</i> field instead of individual path or leaf callbacks.
+<li><b>DO NOT free() THE CALLBACK STRUCTURE</b> as you had to do with the old callbacks.
+</ol>
+
+
+<p><hr><h2><a name="pub">Public Functions</a></h2>
+<p>All changes to the widget are reflected immediately, unless a call to
+ListTreeRefreshOff() is made before updating.  ListTreeRefreshOn() must be
+called before the list will start to update itself again.
+
+<p>I could probably have gone on forever writing convenience functions for
+more and more generalized states, but I'd still be typing the source code, and
+not working on this here primo-excellent documentation. :)  So, this is where
+the "batteries not included" phrase enters in:  it is up to you to customize
+the widget for your own use.  The entire tree of items contained in the
+widget is available for parsing by you by calling <b>ListTreeFirstItem()</b>
+and using the <i>firstchild</i> and <i>nextsibling</i> fields of the
+<b>ListTreeItem</b> structure.
+
+<p>Be careful not to copy over the <i>text</i> field of a <b>ListTreeItem</b>,
+because it is a malloced string.  Use <b>ListTreeRenameItem()</b> if you need
+to change a name.
+
+<ul>
+<li>
+<h3><a name="ref">List Refresh Functions</a></h3>
+<dl>
+<p><dt>void <b>ListTreeRefreshOff</b>(ListTreeWidget w)
+<dd>Turns off the automatic updating of the list.  Useful when adding many
+items to the list.
+
+<p><dt>void <b>ListTreeRefreshOn</b>(ListTreeWidget w)
+<dd>Turns on the automatic updating.
+</dl>
+
+<li>
+<h3><a name="listitem">List Item Manipulation Functions</a></h3>
+<dl>
+<p><dt>ListTreeItem *<b>ListTreeAdd</b>(ListTreeWidget w, ListTreeItem *parent, char *string)
+<dd>Adds an item to the list as a child of <i>parent</i>.  If <i>parent</i> is
+NULL, adds the item as a root item.  All items are added at the end of
+the list of children of that parent; i.e. they are not sorted.
+Returns NULL if an error occurs.
+
+<p><dt>int <b>ListTreeDelete</b>(ListTreeWidget w, ListTreeItem *item)
+<dd>Removes <i>item</i> and all of its children from the list.
+Returns 1 if successful, 0 if failure.
+
+<p><dt>int <b>ListTreeDeleteChildren</b>(ListTreeWidget w, ListTreeItem *item)
+<dd>Removes only the children of <i>item</i> from the list.  
+Returns 1 if successful, 0 if failure.
+
+<p><dt>void <b>ListTreeRenameItem</b>(ListTreeWidget w, ListTreeItem *item, char *string)
+<dd>Changes the text of <i>item</i> to <i>string</i>.
+
+<p><dt>int <b>ListTreeReparent</b>(ListTreeWidget w, ListTreeItem *item, ListTreeItem *newparent)
+<dd>Moves <i>item</i> to become a new child of <i>newparent</i>.
+Returns 1 if successful, 0 if failure.
+
+<p><dt>int <b>ListTreeReparentChildren</b>(ListTreeWidget w, ListTreeItem *item, ListTreeItem *newparent)
+<dd>Moves the children of <i>item</i> to become a new children
+of <i>newparent</i>.
+Returns 1 if successful, 0 if failure.
+
+</dl>
+
+<li>
+<h3><a name="listorder">List Item Ordering Functions</a></h3>
+<dl>
+<p><dt>int <b>ListTreeOrderChildren</b>(ListTreeWidget w, ListTreeItem *item)
+<dd>Alphabetize the children of <i>item</i>.
+Returns 1 if successful, 0 if failure.
+
+<p><dt>int <b>ListTreeOrderSiblings</b>(ListTreeWidget w, ListTreeItem *item)
+<dd>Alphabetize all siblings of <i>item</i>.
+Returns 1 if successful, 0 if failure.
+
+<p><dt>int <b>ListTreeUserOrderChildren</b>(ListTreeWidget w, ListTreeItem *item,int (*func)())
+<dd>Orders the children of <i>item</i> according to a user-specified
+procedure.
+Returns 1 if successful, 0 if failure.
+
+<p><dt>int <b>ListTreeUserOrderSiblings</b>(ListTreeWidget w, ListTreeItem *item,int (*func)())
+<dd>Orders all siblings of <i>item</i> according to a user-specified
+procedure.
+Returns 1 if successful, 0 if failure.
+
+<p><dt>Note for the user order subroutines:  func() should be a pointer to
+a function that can be fed to qsort().  I.e. it takes two void pointers
+and returns an integer that is negative if the first item should be listed
+before the second, positive if the first should be listed after the second,
+and zero if the two items go in the same position.  The list that is sorted
+by qsort is a list of ListTreeItem pointers, so each void pointer to your
+sorting function must cast into a pointer to a ListTreeItem pointer.  A bit
+of code would probably make this clearer:  the following code is from
+ListTree.c that is used to alphabetize the list.
+
+<pre>
+int
+AlphabetizeItems(const void *item1, const void *item2)
+{
+  return strcmp((*((ListTreeItem **) item1))->text,
+		(*((ListTreeItem **) item2))->text);
+}
+</pre>
+
+</dl>
+
+<li>
+<h3><a name="listfind">List Item Searching Functions</a></h3>
+<dl>
+<p><dt>ListTreeItem *<b>ListTreeFirstItem</b>(ListTreeWidget w)
+<dd>Returns the first item in list.  Returns NULL if there are no items
+in the list.
+
+<p><dt>ListTreeItem *<b>ListTreeFindSiblingName</b>(ListTreeWidget w, ListTreeItem *item, char *name)
+<dd>Searches for <i>name</i> among the siblings of <i>item</i>.
+Returns NULL if the name is not found.
+
+<p><dt>ListTreeItem *<b>ListTreeFindChildName</b>(ListTreeWidget w, ListTreeItem *item, char *name)
+<dd>Searches for <i>name</i> among the children of <i>item</i>.
+Returns NULL if the name is not found.
+
+</dl>
+
+<li>
+<h3><a name="listhl">List Highlighting Functions</a></h3>
+<dl>
+<p><dt>void <b>ListTreeHighlightItem</b>(ListTreeWidget w, ListTreeItem *item)
+<dd>Highlights <i>item</i> and unhighlights previously highlighted items.
+
+<p><dt>void <b>ListTreeHighlightedAll</b>(ListTreeWidget w)
+<dd>Highlights all items currently visible in the widget.  Only top level
+items and items that are direct descendants of open items are highlighted.
+I.e. items whose parents are closed are <b>not</b> highlighted.
+
+<p><dt>void <b>ListTreeClearHighlighted</b>(ListTreeWidget w)
+<dd>Unhighlights any items currently selected in the widget.
+
+<p><dt>void <b>ListTreeGetHighlighted</b>(ListTreeWidget w,ListTreeMultiReturnStruct *ret)
+<dd>Fills the return struct with the items currently selected in the widget.
+
+<p><dt>void <b>ListTreeSetHighlighted</b>(ListTreeWidget w, ListTreeItem **items, int count, Boolean clear)
+<dd>Unhighlights any previously highlighted items if <i>clear</i> is True.
+Then, highlights <i>count</i>
+items from the list <i>items</i>.  If count is negative, the list <i>items</i>
+should be NULL terminated.
+
+</dl>
+</ul>
+
+<hr>
+<a href="http://www.ae.utexas.edu/~rwmcm">About the author</a> |
+<a href="mailto:rwmcm@orion.ae.utexas.edu">Send me E-mail</a> |
+<a href=ListTree.html>ListTree home page</a> |
+<a href="#top">Top of page</a><p>
+</body></html>

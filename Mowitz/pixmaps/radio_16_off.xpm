@@ -1,0 +1,22 @@
+/* XPM */
+static char * radio_16_off_xpm[] = {
+"16 16 3 1",
+" 	c none",
+".	c #000000000000",
+"X	c #FFFFFFFFFFFF",
+"     .....      ",
+"   ..XXXXX..    ",
+"  .XXXXXXXXX.   ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+".XXXXXXXXXXXXX. ",
+".XXXXXXXXXXXXX. ",
+".XXXXXXXXXXXXX. ",
+".XXXXXXXXXXXXX. ",
+".XXXXXXXXXXXXX. ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+"  .XXXXXXXXX.   ",
+"   ..XXXXX..    ",
+"     .....      ",
+"                "};

@@ -1,0 +1,12 @@
+The Mowitz library is Free Software. All widgets are released
+under GPL, LGPL or MIT/X style license. The reason for the multiple
+licenses is that the code was written by different people and the
+original licenses differ.
+
+What this means is that if your application will be released under
+the GPL, like most free software these days, you won't have a problem.
+If you are planning on developing a commercial application and
+distribute binaries without source, you'll have to remove any
+code in this library which is under the GPL (because the GPL would
+otherwise force the completed application under the GPL as well).
+See source code for details.

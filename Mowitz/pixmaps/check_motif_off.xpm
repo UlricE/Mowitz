@@ -1,0 +1,19 @@
+/* XPM */
+static char * check_motif_off_xpm[] = {
+"13 13 3 1",
+" 	c #DF7DDF7DDF7D",
+".	c #820782078207",
+"X	c #BEFBBEFBBEFB",
+"            .",
+"           ..",
+"  XXXXXXXXX..",
+"  XXXXXXXXX..",
+"  XXXXXXXXX..",
+"  XXXXXXXXX..",
+"  XXXXXXXXX..",
+"  XXXXXXXXX..",
+"  XXXXXXXXX..",
+"  XXXXXXXXX..",
+"  XXXXXXXXX..",
+" ............",
+"............."};

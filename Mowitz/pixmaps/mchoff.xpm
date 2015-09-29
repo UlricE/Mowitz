@@ -1,0 +1,15 @@
+/* XPM */
+static char * mchoff[] = {
+"9 9 3 1",
+" 	s bottomShadowColor     m black	c lightgray",
+".	s topShadowColor        m white	c darkgray",
+"X	s None	c None",
+"         ",
+"        .",
+"  XXXXX..",
+"  XXXXX..",
+"  XXXXX..",
+"  XXXXX..",
+"  XXXXX..",
+"  .......",
+" ........"};

@@ -1,0 +1,66 @@
+$Id: Slider.README,v 1.1.1.1 2003/01/16 20:31:55 ulric Exp $
+
+Slider 1.0 -- A widget which allows the user to specify a value.
+
+  Slider is a widget similar to the Motif XmScale widget.  It
+  allows the user to specify an input value by moving a slider.
+  Operation is very similar to a scrollbar, but the size of the
+  thumb does not change, and the slider always operates over its
+  full range.
+
+  The key slider resources are: minimum value, maximum value, current
+  value, step size, input scale and orientation.
+
+  In addition, input scaling is available for very small sliders.
+  This means that large cursor motions map to small changes in the
+  slider.  For example, theoretically that a slider with only one
+  pixel of motion (or no pixels of motion for that matter) can
+  still be controlled over its full range.  Input scaling is normally
+  performed automatically for sliders with less than 100 pixels of
+  motion, with the scale factor set such that the range of cursor
+  motion is 100 pixels.
+
+  Callbacks are provided for continuous changes and operation complete.
+
+  Scrollwheel mouse support is provided.
+
+  Includes this handy utility module:
+    Gcs.c -- utilities for creating shadow colors.
+
+
+  To view the man page:  tbl Slider.man | nroff -man
+
+
+HOW TO BUILD
+
+  It should be sufficient to type
+	
+	xmkmf ; make
+
+  This will build the widget and a demo program.
+
+  Alternatively, Makefiles for Solaris, SunOS, Linux and others have been
+  provided.  To use; choose the Makefile closest to your own system,
+  copy it to Makefile, modify it as needed and build.
+
+
+
+AUTHOR
+	Edward A. Falk <falk@falconer.vip.best.com>
+
+
+
+
+LICENSE
+
+    Copyright © 2000    Edward A. Falk
+
+    The X Consortium, and any party obtaining a copy of these files
+    from the X Consortium, directly or indirectly, is granted, free of
+    charge, a full and unrestricted irrevocable, world-wide, paid up,
+    royalty-free, nonexclusive right and license to deal in this
+    software and documentation files (the "Software"), including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and sell copies of the Software, and to
+    permit persons who receive copies from any such party to do so.
+

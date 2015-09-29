@@ -1,0 +1,15 @@
+/* XPM */
+static char * mc2off[] = {
+"9 9 3 1",
+" 	s None	c None",
+".	s bottomShadowColor	c black",
+"X	s topShadowColor	c white",
+"   ...   ",
+"  .   X  ",
+" .     X ",
+".       X",
+".       X",
+".       X",
+" .     X ",
+"  .   X  ",
+"   XXX   "};

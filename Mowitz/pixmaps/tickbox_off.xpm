@@ -1,0 +1,22 @@
+/* XPM */
+static char * tickbox_off_xpm[] = {
+"16 16 3 1",
+" 	c none",
+".	c #000000000000",
+"X	c #FFFFFFFFFFFF",
+"                ",
+"                ",
+" .............  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .XXXXXXXXXXX.  ",
+" .............  ",
+"                "};

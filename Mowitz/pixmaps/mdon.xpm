@@ -1,0 +1,16 @@
+/* XPM */
+static char * mdon[] = {
+"9 9 4 1",
+" 	s None	c None",
+".	s bottomShadowColor     m black c darkgray",
+"X	s foreground            m black c black",
+"o	s topShadowColor        m white c lightgray",
+"    .    ",
+"   ...   ",
+"  ..X..  ",
+" ..XXX.. ",
+"..XXXXX..",
+" ooXXXoo ",
+"  ooXoo  ",
+"   ooo   ",
+"    o    "};

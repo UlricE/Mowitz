@@ -1,0 +1,16 @@
+/* XPM */
+static char * mchon[] = {
+"9 9 4 1",
+" 	s topShadowColor        m white	c darkgray",
+".	s bottomShadowColor     m black	c lightgray",
+"X	s background		m white	c white",
+"o	s foreground		m black	c black",
+"         ",
+"        .",
+"  XXXXX..",
+"  XXXXo..",
+"  XXXoX..",
+"  oXoXX..",
+"  XoXXX..",
+"  .......",
+" ........"};

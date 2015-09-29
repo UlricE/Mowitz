@@ -1,0 +1,114 @@
+
+070830	Two patches from Pascal Terjan fixes buffer overflows
+	in MwXFilesel.c and MwXFormat.c.
+	Released 0.3.1.
+
+040108	Added John Cwikla's XCC code. Prepended Mw to all files
+	and external symbols. This adds "Color Contexts" which
+	allow easy colour management with any visual. Anything
+	within Mowitz that calls MwAllocColor or MwQueryColor
+	will be rewritten to use color contexts instead.
+
+030919	Cleaned up the code for release.
+	Released 0.3.0.
+
+030304	New widget in MwApplicationShell.c is subclassed from
+	applicationShellWidgetClass, but has callbacks for
+	OffiX and Xdnd drops.
+
+030209	MwMenu.c: catch X errors in XGrabButton. Needed for OpenWindows,
+	discovered by James B. Hiller <jhiller@visi.net>.
+	Released 0.2.3.
+
+030128	Changed malloc to MwMalloc, realloc to MwRealloc and
+	free to MwFree in MwRudegrid.c.
+
+030117	A freak hack in MwRichtext.c keeps Siag Office from crashing
+	on Solaris.
+
+020506	Patch from Petr Mladek <pmladek@suse.cz> handles the case when
+	XOpenIM returns NULL because no input method can be opened.
+	Release 0.2.1.
+
+020315	Added check to acinclude.m4 to see that the library chosen
+	for XAWLIB is actually available, as suggested by
+	Edward Avis <ed@membled.com>.
+	Another check to define NARROWPROTO only for systems that need it.
+
+020223	Use environment variable BROWSER to get default help browser.
+	Netscape is used if BROWSER is not set.
+
+020215	Changed mkt1cfg so it generates the right path for font config.
+	Fixed up the t1lib code.
+
+020209	Moved the Html widget to the Kylie project, so it can mature
+	in an application rather than a library that Siag Office
+	depends on.
+
+020131	Added the HTML parser from myhtml.
+
+020121	Fonts and configuration from Siag Office. Environment variable
+	MOWITZ_DATA tells us where it is [/usr/local/share/Mowitz].
+020120	Added Animator, Richtext and Table from Siag Office.
+
+020119	Added and cleaned up format code from Siag Office.
+	Changed beNiceToColormap everywhere.
+
+020105	Seems like there were remaining cfree's. Removed them.
+	Also added --with-xawm configure option, like in Siag Office.
+	Released 0.1.1.
+
+020105	OK, I've had it with the file selector. Reverted to 0.0.1 version.
+	That one seems broken as well. Reverted to the (non-widget) code
+	from Siag Office 3.4.10.
+	Added Check menu entry.
+	Released 0.1.0.
+
+020103	Changed the default MwMalloc error message.
+	Increased MwMalloc paranoia level to 3 in allwidgets.c
+
+011230	Clear out private Filesel resources in Initialize.
+	Header fixer-upper in MwRudegridP.h to compile on Solaris.
+
+011230	Added MwCheckME widget.
+	Released 0.0.1.
+
+011226	New function MwSetIcon to set application icon.
+	New function MwHighlightInit creates two actions to show
+	highlighting using the 3d shadow width.
+	Added OffiX DND code.
+	New Tabstop widget (previously Ruler in Siag Office).
+
+011225	Added more stuff from Siag Office.
+
+011222	Fixed geometry initialisation code for Spinner and Combo.
+
+011221	Updated allwidgets example.
+
+011220	Updated automake, autoconf and libtool.
+
+011218	Added ListTree. New examples: listtree and listtree2.
+	Added Slider, VSlider and Ruler.
+	New header Mowitz.h includes all other public headers.
+
+011217	Spinner: Removed Rudegrid (subclass directly from Frame).
+	Added Check, Tabs and Notebook widgets from Siag Office.
+
+011216	Canvas: Added Initialize method to set initial size.
+	Default size is now 50x50.
+	Replaced expose resource with XtNcallback callback list.
+	Combo: Replaced the text_cb and list_cb resources with the
+	callback lists XtNtextCallback and XtNlistCallback.
+	Frame: Changed default shadow style to Lowered.
+	Handle: Replaced detach and attach resources with callback
+	lists XtNdetachCallback and XtNattachCallback.
+	Image: Added Initialize method to set initial size (50x50).
+	Rudegrid: Set default size (100x100).
+
+011215	Added Nws menu widgets.
+
+011214	Subclassed Combo from Frame rather than Composite.
+	Set minimum size in Initialize.
+
+011213	Started project by breaking out lots of code from Siag Office.
+

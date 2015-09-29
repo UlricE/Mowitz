@@ -1,0 +1,15 @@
+/* XPM */
+static char * mron[] = {
+"9 9 3 1",
+" 	s topShadowColor        m white c lightgray",
+".	s bottomShadowColor     m black c darkgray",
+"X	s foreground            m black c black",
+"         ",
+"        .",
+"  XXXXX..",
+"  XXXXX..",
+"  XXXXX..",
+"  XXXXX..",
+"  XXXXX..",
+"  .......",
+" ........"};
