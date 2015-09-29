@@ -1,4 +1,4 @@
-AC_DEFUN(AC_CHECK_MOWITZ,
+AC_DEFUN([AC_CHECK_MOWITZ],
 [
 AC_CHECK_LIB(m, ceil)
 dnl We want to use gmatch where fnmatch is not available
