@@ -1,6 +1,6 @@
 SUBDIRS = Mowitz examples doc
 
-EXTRA_DIST = README mowitz-config.sh
+EXTRA_DIST = mowitz-config.sh
 
 mowitz-config: mowitz-config.sh Makefile
 	./mowitz-config.sh "-I$(includedir) @CFLAGS_CFG@" \
