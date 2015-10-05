@@ -1,4 +1,4 @@
-INCLUDES = -I.. -DNeedFunctionPrototypes -DUSE_XPM $(X_CFLAGS)
+AM_CPPFLAGS = -I.. -DNeedFunctionPrototypes -DUSE_XPM $(X_CFLAGS)
 
 #LDADD = ../Mowitz/.libs/libMowitz.a $(X_LIBS) $(X_PRE_LIBS) $(X_EXTRA_LIBS)
 LDADD = -L../Mowitz/ -lMowitz $(X_LIBS) $(X_PRE_LIBS) $(X_EXTRA_LIBS)

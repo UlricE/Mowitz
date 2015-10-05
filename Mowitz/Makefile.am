@@ -68,7 +68,7 @@ t1lib.config: mkt1cfg
 
 libMowitz_la_LDFLAGS = -version-info 3:1:3
 
-INCLUDES = $(DEBUG) @X_CFLAGS@ \
+AM_CPPFLAGS = $(DEBUG) @X_CFLAGS@ \
 	-DNeedFunctionPrototypes -I.. \
 	-DDEFAULT_PIXPATH=\"$(xpmdir)\" -DMOWITZ_DATA=\"$(pkgdatadir)\"
 
