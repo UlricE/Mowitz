@@ -1,4 +1,4 @@
-This is the Mowitz ("More widgets) library.
+This is the Mowitz ("More widgets") library.
 
 The project's goal is to create a library of widgets for X applications
 to use. The widgets have been snarfed from various sources and are
@@ -74,7 +74,7 @@ to application writers as well. The functionality includes:
 
 
 
-Mowitz à la carte
+Mowitz Ã  la carte
 -----------------
 
 It is possible to pick and choose among the widgets within Mowitz.
